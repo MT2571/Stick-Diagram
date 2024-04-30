@@ -134,7 +134,7 @@ t = turtle.Turtle()
 ls_heads = []
 ls_tails = []
 pattern_AandB = re.compile(r'^(.*.)$')
-y = input("Enter an expression")
+y = "(a+b)+(a+b)*(c)"
 print(y)
 ls = []
 for i in y:
@@ -157,12 +157,14 @@ for i in y:
         if (str == "(+)"):
             connect_2cor(ls_heads[-1], ls_heads[-2])
             connect_2cor(ls_tails[-1], ls_tails[-2])
-            ls_heads.pop(1)
-            ls_tails.pop(0)
+            ls_heads.pop(-2)
+            ls_tails.pop(-2)
         if (str == "(*)"):
-            connect_2cor(ls_tails[0], ls_heads[1])
-            ls_heads.pop(1)
-            ls_tails.pop(0)
+            connect_2cor(ls_tails[-2], ls_heads[-1])
+            ls_heads.pop(-1)
+            ls_tails.pop(-2)
+        print(ls_heads)
+        print(ls_tails)
 print(ls)
 print(ls_heads)
 print(ls_tails)
